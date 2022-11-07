@@ -9,7 +9,7 @@ on:
 jobs:
   tests:
     name: Code tests
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -22,7 +22,7 @@ jobs:
 
   build-dev:
     name: Building code for dev environment
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: tests
     environment: dev
 
@@ -38,7 +38,7 @@ jobs:
 
   deploy-dev:
     name: Deploy app on dev environment
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs:
       - tests
       - build-dev
@@ -50,7 +50,7 @@ jobs:
 
   deploy-prod:
     name: Deploy app on dev environment
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: deploy-dev
     environment: prod
 
