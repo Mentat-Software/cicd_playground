@@ -7,5 +7,5 @@ on:
     branches: ["main"]
 
 jobs:
-  tests:
+  test_build_deploy:
     uses: Mentat-Software/cicd_playground/.github/workflows/build_test_deploy.yml@main
