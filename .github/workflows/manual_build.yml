@@ -1,4 +1,4 @@
-name: Run build on main branch on demand
+name: Run build on selected branch on demand
 
 on:
   workflow_dispatch:
