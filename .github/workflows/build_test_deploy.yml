@@ -1,0 +1,57 @@
+name: Test, build and deploy
+
+on:
+  workflow_call:
+
+jobs:
+  tests:
+    name: Code tests
+    runs-on: self-hosted
+    environment: dev
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        run: echo "Running some tests"
+
+      - name: Upload test reports
+        run: echo "Uploading test reports"
+
+  build-dev:
+    name: Building code for dev environment
+    runs-on: self-hosted
+    needs: tests
+    environment: dev
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Building
+        run: echo "Building for dev env"
+
+      - name: Saving artifacts
+        run: echo "Saving artifacts"
+
+  deploy-dev:
+    name: Deploy app on dev environment
+    runs-on: self-hosted
+    needs:
+      - tests
+      - build-dev
+    environment: dev
+
+    steps:
+      - name: Put artifacts on dev-server
+        run: echo "Pushing app to dev server"
+
+  deploy-prod:
+    name: Deploy app on prod environment
+    runs-on: self-hosted
+    needs: deploy-dev
+    environment: prod
+
+    steps:
+      - name: Put artifacts on prod-server
+        run: echo "Pushing app to prod server"
