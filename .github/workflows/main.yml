@@ -8,4 +8,4 @@ on:
 
 jobs:
   tests:
-    uses: Mentat-Software/cicd_playground/.github/workflows/build_test_deploy.yml@tests
+    uses: Mentat-Software/cicd_playground/.github/workflows/build_test_deploy.yml@main
