@@ -1,4 +1,4 @@
-name: Test, build and deploy
+name: Test, build and deploy (shared workflow)
 
 on:
   workflow_call:
